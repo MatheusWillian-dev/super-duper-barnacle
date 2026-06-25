@@ -1,0 +1,399 @@
+/* ==========================================================================
+   ROMANTIC WEBSITE DESIGN SYSTEM & STYLESHEET
+   Created with love for Vitória
+   ========================================================================== */
+
+/* --- Custom Variables & Theme --- */
+:root {
+    --bg-gradient: radial-gradient(circle at center, #2e0817 0%, #0d0107 100%);
+    --primary-color: #ff477e;
+    --primary-hover: #ff7096;
+    --secondary-color: #ff85a1;
+    --accent-color: #f72585;
+    --text-main: #fff0f3;
+    --text-muted: #ffccd5;
+    --glass-bg: rgba(255, 255, 255, 0.04);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-shadow: 0 16px 36px 0 rgba(0, 0, 0, 0.6);
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-script: 'Dancing Script', cursive;
+}
+
+/* --- Base Resets & Structure --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg-gradient);
+    font-family: var(--font-sans);
+    color: var(--text-main);
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 20px 10px;
+}
+
+/* --- Ambient Floating Hearts (Background) --- */
+.heart-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.floating-heart {
+    position: absolute;
+    bottom: -50px;
+    font-size: 20px;
+    color: rgba(255, 71, 126, 0.15);
+    filter: drop-shadow(0 0 5px rgba(255, 71, 126, 0.3));
+    user-select: none;
+    pointer-events: none;
+    will-change: transform, opacity;
+}
+
+/* --- Floating Music Player --- */
+.music-player-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.music-btn {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--text-main);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.music-btn:hover {
+    transform: scale(1.15) rotate(15deg);
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 20px rgba(255, 71, 126, 0.6);
+}
+
+.music-btn.playing {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    animation: pulseGlow 2s infinite;
+}
+
+.music-tooltip {
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    opacity: 0;
+    transform: translateX(10px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    white-space: nowrap;
+    border: 1px solid rgba(255, 71, 126, 0.2);
+}
+
+.music-player-container:hover .music-tooltip {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* --- Layout Container --- */
+.main-container {
+    width: 100%;
+    max-width: 1100px;
+    z-index: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 20px 0;
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    text-align: center;
+    margin-bottom: 10px;
+    animation: fadeInDown 1.2s ease-out;
+}
+
+.main-title {
+    font-family: var(--font-serif);
+    font-size: 3.5rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    background: linear-gradient(to right, #ffffff 30%, #ff85a1 70%, #ff477e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+    text-shadow: 0 4px 15px rgba(255, 71, 126, 0.2);
+}
+
+.subtitle {
+    font-family: var(--font-sans);
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    font-weight: 300;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* --- Phrase Generator Specifics --- */
+.phrase-card {
+    max-width: 650px;
+    width: 100%;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+
+.phrase-display-wrapper {
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+.phrase-text {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    line-height: 1.6;
+    text-align: center;
+    color: var(--text-muted);
+    font-style: italic;
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.5s ease;
+}
+
+/* Class applied dynamically via JS to trigger transition */
+.phrase-changing {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.interactive-btn {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+    border: none;
+    color: #fff;
+    padding: 16px 28px;
+    border-radius: 50px;
+    font-family: var(--font-sans);
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 8px 24px rgba(247, 37, 133, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.interactive-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.5s ease-out;
+}
+
+.interactive-btn:active::after {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+    transition: 0s;
+}
+
+.interactive-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(247, 37, 133, 0.6);
+}
+
+.interactive-btn:active {
+    transform: translateY(1px);
+}
+
+.icon-btn {
+    font-size: 18px;
+    animation: heartBeat 1.5s infinite;
+}
+
+/* --- Click Particles (Coração Estourando) --- */
+.click-heart {
+    position: fixed;
+    z-index: 999;
+    color: var(--primary-color);
+    font-size: 24px;
+    pointer-events: none;
+    animation: popOut 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    will-change: transform, opacity;
+}
+
+/* --- Footer --- */
+.footer {
+    text-align: center;
+    margin-top: 20px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    opacity: 0.7;
+    animation: fadeInUp 1.5s ease-out;
+}
+
+.footer p {
+    letter-spacing: 0.5px;
+}
+
+/* ==========================================================================
+   ANIMATIONS & KEYFRAMES
+   ========================================================================== */
+
+@keyframes heartBeat {
+    0% { transform: scale(1); }
+    14% { transform: scale(1.12); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.12); }
+    70% { transform: scale(1); }
+}
+
+@keyframes floatHeart {
+    0% {
+        transform: translateY(0) rotate(0deg) scale(0.6);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-105vh) rotate(360deg) scale(1.2);
+        opacity: 0;
+    }
+}
+
+@keyframes popOut {
+    0% {
+        transform: translate(-50%, -50%) scale(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--tx), var(--ty)) scale(var(--s)) rotate(var(--r));
+        opacity: 0;
+    }
+}
+
+@keyframes pulseGlow {
+    0% { box-shadow: 0 0 0 0 rgba(247, 37, 133, 0.5); }
+    70% { box-shadow: 0 0 0 15px rgba(247, 37, 133, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(247, 37, 133, 0); }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================================================
+   MEDIA QUERIES (RESPONSIVIDADE)
+   ========================================================================== */
+
+/* Tablet & Smaller Desktops */
+@media (max-width: 900px) {
+    .main-container {
+        padding: 10px;
+    }
+
+    .main-title {
+        font-size: 2.8rem;
+    }
+
+    .card {
+        padding: 25px;
+    }
+}
+
+/* Mobile Devices */
+@media (max-width: 480px) {
+    body {
+        padding: 15px 5px;
+    }
+
+    .main-title {
+        font-size: 2.2rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .interactive-btn {
+        padding: 14px 22px;
+        font-size: 0.95rem;
+    }
+    
+    .music-player-container {
+        top: 15px;
+        right: 15px;
+    }
+    
+    .music-btn {
+        width: 42px;
+        height: 42px;
+        font-size: 16px;
+    }
+}

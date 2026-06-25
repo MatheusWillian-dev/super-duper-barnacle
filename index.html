@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Um site especial feito com todo o amor para o meu amor.">
+    <title>Para Vitória, com Amor ❤️</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Heart Background Container -->
+    <div id="heart-bg-container" class="heart-bg"></div>
+
+    <!-- Music Player Floating Button -->
+    <div class="music-player-container">
+        <button id="music-toggle" class="music-btn" aria-label="Tocar música de fundo">
+            <i class="fa-solid fa-music"></i>
+        </button>
+        <span class="music-tooltip">Tocar trilha sonora 🎵</span>
+        <!-- Royalty-free soft acoustic/piano background music -->
+        <audio id="background-music" loop preload="auto">
+            <source src="https://assets.mixkit.co/music/preview/mixkit-soft-piano-background-504.mp3" type="audio/mpeg">
+            Seu navegador não suporta áudio.
+        </audio>
+    </div>
+
+    <!-- Main Container -->
+    <main class="main-container">
+        <!-- Hero Section -->
+        <header class="hero-section">
+            <h1 class="main-title">Para Vitória 💖</h1>
+            <p class="subtitle">Cada segundo ao seu lado é um presente que guardo no peito.</p>
+        </header>
+        <!-- Phrase Generator Card -->
+        <section class="card phrase-card">
+            <h2 class="card-title"><i class="fa-solid fa-wand-magic-sparkles icon-accent"></i> Um Pensamento para Você</h2>
+            <div class="phrase-display-wrapper">
+                <p id="phrase-display" class="phrase-text">Clique no botão abaixo para ler o que meu coração sente por você neste exato momento...</p>
+            </div>
+            
+            <button id="phrase-btn" class="interactive-btn">
+                <span>Clique aqui, meu amor</span>
+                <i class="fa-solid fa-heart-pulse icon-btn"></i>
+            </button>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Feito com todo o carinho e amor do mundo por Matheus. ☕</p>
+        </footer>
+    </main>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
