@@ -1,399 +1,148 @@
-/* ==========================================================================
-   ROMANTIC WEBSITE DESIGN SYSTEM & STYLESHEET
-   Created with love for Vitória
-   ========================================================================== */
+/* style.css
+   Atualizado: substituições pedidas (trilha sonora e frase poética).
+   Mobile-first, paleta romântica em tons de rosa/pastel.
+*/
 
-/* --- Custom Variables & Theme --- */
-:root {
-    --bg-gradient: radial-gradient(circle at center, #2e0817 0%, #0d0107 100%);
-    --primary-color: #ff477e;
-    --primary-hover: #ff7096;
-    --secondary-color: #ff85a1;
-    --accent-color: #f72585;
-    --text-main: #fff0f3;
-    --text-muted: #ffccd5;
-    --glass-bg: rgba(255, 255, 255, 0.04);
-    --glass-border: rgba(255, 255, 255, 0.08);
-    --glass-shadow: 0 16px 36px 0 rgba(0, 0, 0, 0.6);
-    --font-serif: 'Playfair Display', Georgia, serif;
-    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-    --font-script: 'Dancing Script', cursive;
+/* Variáveis de tema */
+:root{
+  --bg: #fff7fb;
+  --card: #fff;
+  --accent: #ff6b8a;
+  --accent-2: #ff9bb3;
+  --muted: #f6dfe6;
+  --text: #3b2b2b;
+  --soft: #ffdfe8;
+  --shadow: rgba(107, 40, 60, 0.12);
+  --primary: #ff6b8a;
 }
 
-/* --- Base Resets & Structure --- */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* Reset e tipografia */
+*{box-sizing:border-box}
+html,body,#app{height:100%}
+body{
+  margin:0;
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg, var(--bg) 0%, #fff 100%);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  -webkit-tap-highlight-color: transparent;
+  overflow-x:hidden;
 }
 
-body {
-    background: var(--bg-gradient);
-    font-family: var(--font-sans);
-    color: var(--text-main);
-    min-height: 100vh;
-    overflow-x: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    padding: 20px 10px;
+/* Container principal */
+main#app{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  padding:18px;
+  min-height:100vh;
+  align-items:stretch;
+  position:relative;
 }
 
-/* --- Ambient Floating Hearts (Background) --- */
-.heart-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 0;
-    overflow: hidden;
+/* Fade-in */
+.fade-in{ animation: fadeIn 420ms ease both; }
+@keyframes fadeIn{ from{opacity:0; transform: translateY(6px)} to{opacity:1; transform: translateY(0)} }
+
+/* Hero */
+.hero{
+  text-align:center;
+  padding:16px;
+  border-radius:12px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.95));
+  box-shadow: 0 6px 18px var(--shadow);
+}
+h1{ margin:0; font-size:1.9rem; line-height:1.05; color:var(--accent-2); letter-spacing:-0.5px; }
+.cursive{ font-family: "Great Vibes", cursive; display:block; font-size:2.1rem; color:var(--accent); }
+.subtitle{ margin-top:8px; font-size:0.95rem; color:#6b4b56; }
+
+/* Cards / sections */
+.message-card, .plan, .timeline, .quiz, .fun{
+  background:var(--card);
+  padding:14px;
+  border-radius:12px;
+  box-shadow: 0 6px 14px var(--shadow);
 }
 
-.floating-heart {
-    position: absolute;
-    bottom: -50px;
-    font-size: 20px;
-    color: rgba(255, 71, 126, 0.15);
-    filter: drop-shadow(0 0 5px rgba(255, 71, 126, 0.3));
-    user-select: none;
-    pointer-events: none;
-    will-change: transform, opacity;
+/* Section titles */
+.section-title{ margin:0 0 8px 0; font-size:1.05rem; color:var(--accent); }
+
+/* Plan options */
+.plan-options{ display:flex; gap:10px; }
+.plan-btn{ flex:1; padding:12px; border-radius:12px; background:linear-gradient(180deg,#fff,#fff); border:2px solid var(--muted); font-weight:600; font-size:1rem; }
+.plan-btn.active{ background: linear-gradient(180deg,var(--accent),var(--accent-2)); color:white; border-color:transparent; box-shadow: 0 10px 22px rgba(255,107,138,0.12); }
+
+/* Location area */
+.location-area{ margin-top:10px; display:flex; flex-direction:column; gap:8px; }
+.label{ font-size:0.95rem; color:#6b3b45; }
+#locationInput{ padding:12px; border-radius:10px; border:1px solid #f0dbe0; font-size:0.95rem; }
+.suggestions{ display:flex; gap:8px; flex-wrap:wrap; }
+.suggestion{ padding:8px 10px; border-radius:10px; background:linear-gradient(180deg,#fff,#fff); border:1px solid var(--muted); font-size:0.9rem; }
+
+/* Map actions and buttons */
+.map-actions{ display:flex; gap:8px; margin-top:6px; flex-wrap:wrap; }
+.btn.small{ padding:10px 12px; font-size:0.95rem; border-radius:10px; }
+.btn.primary{ background: linear-gradient(180deg,var(--accent),var(--accent-2)); color:white; border:0; }
+
+/* Time area */
+.time-area{ margin-top:12px; display:flex; flex-direction:column; gap:8px; }
+.time-row{ display:flex; gap:8px; align-items:center; }
+#timeInput{ padding:10px; border-radius:10px; border:1px solid #f0dbe0; background:#fff; font-size:0.95rem; }
+.quick-times{ display:flex; gap:8px; }
+.quick-time{ padding:8px 10px; border-radius:10px; background:linear-gradient(180deg,#fff,#fff); border:1px solid var(--muted); font-size:0.9rem; }
+
+/* Timeline */
+.timeline-list{ display:flex; flex-direction:column; gap:10px; margin-bottom:10px; }
+.memory{ display:flex; gap:10px; align-items:flex-start; }
+.memory-date{ font-size:0.78rem; color:#8a5a66; min-width:86px; }
+.memory-text{ font-size:0.95rem; color:#4a3338; }
+
+/* Quiz */
+.quiz-card{ display:flex; flex-direction:column; gap:10px; }
+.quiz-question{ font-weight:600; font-size:1rem; color:#5a2f3a; }
+.quiz-options{ display:flex; gap:8px; flex-direction:column; }
+
+/* Trilha sonora / sound meter */
+.sound-meter{ display:flex; flex-direction:column; gap:8px; }
+.sound-label{ font-weight:700; color:#6b3b45; padding:6px 8px; border-radius:8px; background:linear-gradient(180deg,#fff,#fff); display:inline-block; margin-top:6px; }
+
+/* Poetic phrase */
+.poetic-phrase{ font-style:italic; color:#5a2f3a; background:linear-gradient(180deg,#fff0f6,#fff); padding:12px; border-radius:10px; border:1px solid #fde8ef; }
+
+/* Actions (SIM / NÃO) */
+.actions{ display:flex; gap:12px; align-items:center; justify-content:center; padding-bottom:12px; flex-direction:column; }
+.btn{ border:0; border-radius:14px; padding:14px 20px; font-size:1.05rem; font-weight:600; cursor:pointer; touch-action:manipulation; user-select:none; box-shadow: 0 8px 18px rgba(0,0,0,0.08); transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease; -webkit-tap-highlight-color: transparent; }
+.btn:active{ transform: translateY(2px) scale(0.995) }
+.btn-yes{ background: linear-gradient(180deg, var(--accent), var(--accent-2)); color:white; padding:18px 28px; font-size:1.2rem; border-radius:18px; width:100%; max-width:520px; box-shadow: 0 12px 26px rgba(255,107,138,0.18); }
+.no-wrapper{ width:100%; max-width:520px; display:flex; justify-content:flex-end; margin-top:8px; position:relative; height:44px; }
+.btn-no{ background:transparent; color:var(--accent); border:2px solid var(--accent); padding:8px 12px; font-size:0.95rem; border-radius:12px; min-width:72px; height:40px; align-self:flex-end; position:relative; z-index:30; }
+
+/* Confirm overlay */
+.confirm{ position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background: linear-gradient(180deg, rgba(255, 255, 255, 0.0), rgba(255, 240, 247, 0.95)); z-index:60; padding:20px; }
+.confirm-card{ background:var(--card); padding:18px; border-radius:14px; text-align:center; box-shadow: 0 12px 30px rgba(0,0,0,0.12); transform-origin:center; animation: popIn 360ms cubic-bezier(.2,.9,.3,1); }
+@keyframes popIn{ from{transform:scale(.92); opacity:0} to{transform:scale(1); opacity:1} }
+.hidden{ display:none; }
+
+/* Floating hearts container */
+#floating-hearts{ position:fixed; inset:0; pointer-events:none; z-index:10; overflow:hidden; }
+
+/* Heart shape (JS) */
+.heart{ position:absolute; width:28px; height:28px; transform-origin:center; will-change: transform, opacity; background:transparent; z-index:20; opacity:0.9; filter: drop-shadow(0 6px 10px rgba(255, 105, 140, 0.12)); }
+.heart::before, .heart::after{ content:""; position:absolute; width:100%; height:100%; background:var(--accent); border-radius:50%; transform-origin:center; }
+.heart::before{ top:-25%; left:0; } .heart::after{ left:25%; top:0; }
+
+/* Burst */
+.burst{ position:absolute; pointer-events:none; z-index:80; }
+
+/* Desktop adjustments */
+@media (min-width:600px){
+  main#app{ max-width:720px; margin:0 auto; padding:24px; }
+  h1{ font-size:2.4rem } .cursive{ font-size:2.8rem }
+  .plan-options{ gap:14px; }
+  .actions{ flex-direction:row; }
+  .no-wrapper{ margin-top:0; justify-content:flex-start; width:auto; height:auto; }
 }
 
-/* --- Floating Music Player --- */
-.music-player-container {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.music-btn {
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    color: var(--text-main);
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 18px;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    backdrop-filter: blur(8px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-.music-btn:hover {
-    transform: scale(1.15) rotate(15deg);
-    background: var(--primary-color);
-    border-color: var(--primary-color);
-    box-shadow: 0 0 20px rgba(255, 71, 126, 0.6);
-}
-
-.music-btn.playing {
-    background: var(--accent-color);
-    border-color: var(--accent-color);
-    animation: pulseGlow 2s infinite;
-}
-
-.music-tooltip {
-    background: rgba(0, 0, 0, 0.8);
-    color: #fff;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 11px;
-    opacity: 0;
-    transform: translateX(10px);
-    transition: all 0.3s ease;
-    pointer-events: none;
-    white-space: nowrap;
-    border: 1px solid rgba(255, 71, 126, 0.2);
-}
-
-.music-player-container:hover .music-tooltip {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-/* --- Layout Container --- */
-.main-container {
-    width: 100%;
-    max-width: 1100px;
-    z-index: 1;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    padding: 20px 0;
-}
-
-/* --- Hero Section --- */
-.hero-section {
-    text-align: center;
-    margin-bottom: 10px;
-    animation: fadeInDown 1.2s ease-out;
-}
-
-.main-title {
-    font-family: var(--font-serif);
-    font-size: 3.5rem;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-    background: linear-gradient(to right, #ffffff 30%, #ff85a1 70%, #ff477e 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 10px;
-    text-shadow: 0 4px 15px rgba(255, 71, 126, 0.2);
-}
-
-.subtitle {
-    font-family: var(--font-sans);
-    color: var(--text-muted);
-    font-size: 1.2rem;
-    font-weight: 300;
-    max-width: 600px;
-    margin: 0 auto;
-    line-height: 1.6;
-}
-
-/* --- Phrase Generator Specifics --- */
-.phrase-card {
-    max-width: 650px;
-    width: 100%;
-    margin: 0 auto;
-    justify-content: space-between;
-}
-
-.phrase-display-wrapper {
-    min-height: 120px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0, 0, 0, 0.2);
-    border: 1px dashed rgba(255, 255, 255, 0.1);
-    border-radius: 16px;
-    padding: 20px;
-    margin-bottom: 25px;
-}
-
-.phrase-text {
-    font-family: var(--font-serif);
-    font-size: 1.15rem;
-    line-height: 1.6;
-    text-align: center;
-    color: var(--text-muted);
-    font-style: italic;
-    opacity: 1;
-    transform: translateY(0);
-    transition: all 0.5s ease;
-}
-
-/* Class applied dynamically via JS to trigger transition */
-.phrase-changing {
-    opacity: 0;
-    transform: translateY(-10px);
-}
-
-.interactive-btn {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
-    border: none;
-    color: #fff;
-    padding: 16px 28px;
-    border-radius: 50px;
-    font-family: var(--font-sans);
-    font-size: 1.05rem;
-    font-weight: 600;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 0 8px 24px rgba(247, 37, 133, 0.4);
-    position: relative;
-    overflow: hidden;
-}
-
-.interactive-btn::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 300px;
-    height: 300px;
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    transition: transform 0.5s ease-out;
-}
-
-.interactive-btn:active::after {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 0;
-    transition: 0s;
-}
-
-.interactive-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 30px rgba(247, 37, 133, 0.6);
-}
-
-.interactive-btn:active {
-    transform: translateY(1px);
-}
-
-.icon-btn {
-    font-size: 18px;
-    animation: heartBeat 1.5s infinite;
-}
-
-/* --- Click Particles (Coração Estourando) --- */
-.click-heart {
-    position: fixed;
-    z-index: 999;
-    color: var(--primary-color);
-    font-size: 24px;
-    pointer-events: none;
-    animation: popOut 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-    will-change: transform, opacity;
-}
-
-/* --- Footer --- */
-.footer {
-    text-align: center;
-    margin-top: 20px;
-    color: var(--text-muted);
-    font-size: 0.85rem;
-    opacity: 0.7;
-    animation: fadeInUp 1.5s ease-out;
-}
-
-.footer p {
-    letter-spacing: 0.5px;
-}
-
-/* ==========================================================================
-   ANIMATIONS & KEYFRAMES
-   ========================================================================== */
-
-@keyframes heartBeat {
-    0% { transform: scale(1); }
-    14% { transform: scale(1.12); }
-    28% { transform: scale(1); }
-    42% { transform: scale(1.12); }
-    70% { transform: scale(1); }
-}
-
-@keyframes floatHeart {
-    0% {
-        transform: translateY(0) rotate(0deg) scale(0.6);
-        opacity: 0;
-    }
-    10% {
-        opacity: 0.8;
-    }
-    90% {
-        opacity: 0.8;
-    }
-    100% {
-        transform: translateY(-105vh) rotate(360deg) scale(1.2);
-        opacity: 0;
-    }
-}
-
-@keyframes popOut {
-    0% {
-        transform: translate(-50%, -50%) scale(0) rotate(0deg);
-        opacity: 1;
-    }
-    100% {
-        transform: translate(var(--tx), var(--ty)) scale(var(--s)) rotate(var(--r));
-        opacity: 0;
-    }
-}
-
-@keyframes pulseGlow {
-    0% { box-shadow: 0 0 0 0 rgba(247, 37, 133, 0.5); }
-    70% { box-shadow: 0 0 0 15px rgba(247, 37, 133, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(247, 37, 133, 0); }
-}
-
-@keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* ==========================================================================
-   MEDIA QUERIES (RESPONSIVIDADE)
-   ========================================================================== */
-
-/* Tablet & Smaller Desktops */
-@media (max-width: 900px) {
-    .main-container {
-        padding: 10px;
-    }
-
-    .main-title {
-        font-size: 2.8rem;
-    }
-
-    .card {
-        padding: 25px;
-    }
-}
-
-/* Mobile Devices */
-@media (max-width: 480px) {
-    body {
-        padding: 15px 5px;
-    }
-
-    .main-title {
-        font-size: 2.2rem;
-    }
-
-    .subtitle {
-        font-size: 1rem;
-    }
-
-    .interactive-btn {
-        padding: 14px 22px;
-        font-size: 0.95rem;
-    }
-    
-    .music-player-container {
-        top: 15px;
-        right: 15px;
-    }
-    
-    .music-btn {
-        width: 42px;
-        height: 42px;
-        font-size: 16px;
-    }
-}
+/* Segurança contra overflow */
+html,body{ max-width:100vw; overflow-x:hidden; }
