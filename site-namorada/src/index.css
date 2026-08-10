@@ -1,0 +1,360 @@
+:root {
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  color: #fffafc;
+  background:
+    radial-gradient(circle at top left, rgba(255, 95, 158, 0.35), transparent 22%),
+    linear-gradient(135deg, #10021d 0%, #220b34 45%, #3d0e4e 100%);
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: transparent;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.app-shell {
+  width: min(1200px, calc(100% - 1.2rem));
+  margin: 0 auto;
+  padding: 1rem 0 2rem;
+}
+
+.hero-card,
+.panel {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+.hero-card {
+  min-height: 420px;
+  padding: 1.35rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.hero-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.16), transparent 58%);
+  pointer-events: none;
+}
+
+.hero-hearts {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.floating-heart {
+  position: absolute;
+  top: 12%;
+  filter: drop-shadow(0 6px 10px rgba(255, 95, 158, 0.45));
+  color: #ff6fa7;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 760px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.hero-card h1 {
+  margin: 0 0 0.85rem;
+  font-size: clamp(1.9rem, 3vw, 3rem);
+  line-height: 1.1;
+}
+
+.hero-card p {
+  margin: 0 auto 1rem;
+  font-size: clamp(1rem, 2.4vw, 1.16rem);
+  max-width: 700px;
+  color: rgba(255, 250, 252, 0.84);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+.primary-link,
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.1rem;
+  border-radius: 999px;
+  border: none;
+  text-decoration: none;
+  color: #1c0a23;
+  background: linear-gradient(90deg, #ffb3cc 0%, #ffd6e9 100%);
+  box-shadow: 0 14px 28px rgba(255, 95, 158, 0.26);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.choice-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.choice-actions button {
+  flex: 1 1 220px;
+}
+
+.choice-actions button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.primary-link:hover,
+button:hover {
+  transform: translateY(-1px);
+}
+
+.secondary-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 0.95rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff8fb;
+  font-weight: 600;
+}
+
+.main-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.panel {
+  padding: 1.2rem;
+}
+
+.section-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  margin-bottom: 1rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.75rem;
+  color: #ffbfdd;
+}
+
+.section-heading h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.card-form form {
+  display: grid;
+  gap: 0.8rem;
+}
+
+label {
+  display: grid;
+  gap: 0.42rem;
+  font-weight: 600;
+  color: #fff2f7;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 0.9rem 0.95rem;
+  color: #fffdfd;
+  background: rgba(255, 255, 255, 0.12);
+  outline: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 92px;
+}
+
+.success-text {
+  margin: 0;
+  color: #ffe6f1;
+  font-size: 0.95rem;
+}
+
+.weather-summary {
+  display: grid;
+  gap: 0.95rem;
+}
+
+.weather-main {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.weather-icon {
+  font-size: 2.3rem;
+}
+
+.weather-location {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0 0 0.3rem;
+  color: #ffd6e8;
+}
+
+.weather-main h3 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.weather-main p {
+  margin: 0.1rem 0 0;
+  color: rgba(255, 250, 252, 0.82);
+}
+
+.weather-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.weather-metrics div {
+  padding: 0.8rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.weather-metrics span {
+  display: block;
+  font-size: 0.75rem;
+  color: #ffcfe1;
+  margin-bottom: 0.25rem;
+}
+
+.weather-metrics strong {
+  font-size: 0.95rem;
+}
+
+.weather-note {
+  margin: 0.8rem 0 0.7rem;
+  color: rgba(255, 250, 252, 0.80);
+}
+
+.datetime-picker {
+  margin-top: 0.2rem;
+}
+
+.poem-list {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.poem-list blockquote {
+  margin: 0;
+  padding: 0.9rem 1rem;
+  border-left: 3px solid #ff7db4;
+  background: rgba(255, 255, 255, 0.09);
+  border-radius: 12px;
+  color: #fff5f9;
+}
+
+.divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.14);
+  margin: 1rem 0 0.85rem;
+}
+
+.closing-message {
+  margin: 0;
+  color: rgba(255, 250, 252, 0.82);
+}
+
+@media (min-width: 840px) {
+  .app-shell {
+    padding: 1.3rem 0 2.6rem;
+  }
+
+  .main-grid {
+    grid-template-columns: 1.15fr 0.85fr;
+    align-items: start;
+  }
+
+  .poem-card {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero-card {
+    min-height: 360px;
+    padding: 1rem;
+  }
+
+  .weather-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+}
